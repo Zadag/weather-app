@@ -1,0 +1,23 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zadag/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zadag/weather-app/issues"
+  },
+  "homepage": "https://github.com/Zadag/weather-app#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.6.0"
+  }
+}
