@@ -9,8 +9,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss/,
+        test: /\.scss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.png$/i,
+        type: 'asset/resource',
       },
     ],
   },

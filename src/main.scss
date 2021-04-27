@@ -1,5 +1,67 @@
-.test {
-  height: 100vh;
-  width: 100vw;
-  background-color: red;
+body {
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 8vh;
+  font-family: fantasy;
+}
+
+header {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 15vh;
+  width: auto;
+}
+
+#search-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 5vh;
+}
+
+#search-bar {
+  width: 50vw;
+  max-width: 500px;
+  height: 3vh;
+  font-size: 3vh;
+  text-align: center;
+  outline: none;
+}
+
+#weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60vh;
+}
+
+@mixin weather-shape {
+  display: flex;
+  flex-direction: row;
+  height: 20vh;
+  width: 80vw;
+  margin-top: 0vh;
+}
+
+#daily-weather {
+  @include weather-shape;
+  background: red;
+}
+
+#hourly-weather {
+  @include weather-shape;
+  background: green;
 }
