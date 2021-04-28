@@ -1,9 +1,19 @@
 import './main.scss';
-import logo from './imgs/sun.png';
+import renderLogo from './modules/render';
+import getDailyWeather from './modules/openWeather';
 
-const header = document.querySelector('header');
+renderLogo();
 
-const logoSrc = new Image();
-logoSrc.src = logo;
-logoSrc.classList.add('logo');
-header.appendChild(logoSrc);
+const cityInput = document.querySelector('#search-bar');
+const searchButton = document.querySelector('#search-button');
+
+searchButton.addEventListener('click', () => {
+  getDailyWeather(cityInput.value);
+});
+
+cityInput.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    getDailyWeather(cityInput.value);
+  }
+});
