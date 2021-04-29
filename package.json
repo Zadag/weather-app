@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Zadag/weather-app#readme",
   "devDependencies": {
     "css-loader": "^5.2.4",
+    "date-fns": "^2.21.1",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "file-loader": "^6.2.0",
