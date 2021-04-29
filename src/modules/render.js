@@ -1,6 +1,7 @@
 import logoSrc from '../imgs/sun.png';
 
 const header = document.querySelector('header');
+
 const renderLogo = () => {
   const img = new Image();
   img.src = logoSrc;
@@ -8,4 +9,12 @@ const renderLogo = () => {
   header.appendChild(img);
 };
 
-export default renderLogo;
+const renderDaily = (daily) => {
+  console.log(daily);
+};
+
+const renderHourly = (hourly) => {
+  console.log(hourly);
+};
+
+export { renderLogo, renderDaily, renderHourly };
