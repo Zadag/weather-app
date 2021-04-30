@@ -201,7 +201,23 @@ h2 {
   background-color: beige;
 }
 
+.daily-card {
+  p,
+  img,
+  h3 {
+    margin-top: 2vh;
+  }
+}
+
 .weather-icon {
-  height: 30%;
+  height: 25%;
   width: auto;
+}
+
+.forecast {
+  text-align: center;
+}
+
+.weekday {
+  text-align: center;
 }
