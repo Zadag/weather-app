@@ -53,7 +53,7 @@ const renderDaily = (daily) => {
 
     const forecast = document.createElement('p');
     forecast.classList.add('forecast');
-    forecast.textContent = daily[i].weather[0].main;
+    forecast.textContent = daily[i].weather[0].description;
 
     dailyWeather.appendChild(card);
     card.appendChild(weekday);

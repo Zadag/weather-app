@@ -13,7 +13,7 @@ const getWeather = async (city) => {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.coord.lat}&lon=${coords.coord.lon}&exclude=minutly,alerts&appid=6c16dfc542501b66b2321dded2954117`,
   );
   const weather = await weatherResponse.json();
-  // console.log(weather);
+
   return weather;
 };
 
