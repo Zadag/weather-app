@@ -171,7 +171,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 60vh;
+  height: 70vh;
 }
 
 @mixin weather-shape {
@@ -185,11 +185,6 @@ h2 {
 #daily-weather {
   @include weather-shape;
   background: red;
-}
-
-#hourly-weather {
-  @include weather-shape;
-  background: green;
 }
 
 .daily-card {
@@ -220,4 +215,12 @@ h2 {
 
 .weekday {
   text-align: center;
+}
+
+#weather-summary {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 40vh;
+  background-color: orange;
 }

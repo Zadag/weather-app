@@ -16,6 +16,26 @@ const renderLogo = () => {
   header.appendChild(img);
 };
 
+const getWeekday = (dayNum) => {
+  if (dayNum === 0) return 'Sunday';
+  if (dayNum === 1) return 'Monday';
+  if (dayNum === 2) return 'Tuesday';
+  if (dayNum === 3) return 'Wedensday';
+  if (dayNum === 4) return 'Thursday';
+  if (dayNum === 5) return 'Friday';
+  if (dayNum === 6) return 'Saturday';
+};
+
+const getFromattedTime = () => {
+  const date = new Date();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  if (date.getHours() > 12) {
+    return `${hour - 12}:${minute} pm`;
+  }
+  return `${date.getHours()}:${date.getMinutes} am`;
+};
+
 const renderDaily = (daily) => {
   console.log(daily);
   const date = new Date();
@@ -59,7 +79,7 @@ const renderDaily = (daily) => {
 
     const temperature = document.createElement('h3');
     temperature.classList.add('temperature');
-    temperature.textContent = daily[i].temp.day;
+    temperature.textContent = `${daily[i].temp.day}`;
 
     const forecast = document.createElement('p');
     forecast.classList.add('forecast');
@@ -81,4 +101,62 @@ const clearDaily = () => {
   }
 };
 
-export { renderLogo, renderDaily, clearDaily };
+const renderSummary = (current) => {
+  const currentDate = new Date();
+
+  const dateAndTimeContainer = document.createElement('div');
+  dateAndTimeContainer.classList.add('date-and-time-container');
+
+  const day = document.createElement('p');
+  day.classList.add('summary-day');
+  const today = getWeekday(currentDate.getDay()); // weekday as a string
+  day.textContent = today;
+
+  const time = document.createElement('p');
+  time.classList.add('summary-time');
+  time.textContent = getFromattedTime();
+
+  const weatherImg = new Image();
+  weatherImg.classList.add('weather-summary-image');
+  if (current.weather[0].main === 'Clouds') weatherImg.src = cloudy;
+  if (current.weather[0].main === 'Clear') weatherImg.src = sunny;
+  if (current.weather[0].main === 'Rain') weatherImg.src = rain;
+  if (current.weather[0].main === 'Snow') weatherImg.src = snow;
+  if (current.weather[0].main === 'Wind') weatherImg.src = windy;
+  if (current.weather[0].main === 'Lightning') weatherImg.src = lightning;
+
+  const descriptionContainer = document.createElement('div');
+  descriptionContainer.classList.add('weather-desc-container');
+
+  const weatherDescription = document.createElement('p');
+  weatherDescription.classList.add('summary-weather-description');
+  const weatherDescString = current.weather[0].description.replace(
+    current.weather[0].description[0],
+    current.weather[0].description[0].toUpperCase(),
+  );
+  weatherDescription.textContent = weatherDescString;
+
+  const temperature = document.createElement('p');
+  temperature.classList.add('summary-temperature');
+  temperature.textContent = `${current.temp}`;
+
+  const feelsLike = document.createElement('p');
+  feelsLike.textContent = `Feels like: ${current.feels_like}`;
+
+  const humidity = document.createElement('p');
+  humidity.classList.add('summary-humidity');
+  humidity.textContent = `Humitidy: ${current.humidity}%`;
+
+  const conatiner = document.getElementById('weather-summary');
+  conatiner.appendChild(dateAndTimeContainer);
+  dateAndTimeContainer.appendChild(day);
+  dateAndTimeContainer.appendChild(time);
+  conatiner.appendChild(weatherImg);
+  conatiner.appendChild(descriptionContainer);
+  descriptionContainer.appendChild(weatherDescription);
+  descriptionContainer.appendChild(temperature);
+  descriptionContainer.appendChild(feelsLike);
+  descriptionContainer.appendChild(humidity);
+};
+
+export { renderLogo, renderDaily, clearDaily, renderSummary };

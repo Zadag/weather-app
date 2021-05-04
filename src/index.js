@@ -1,5 +1,10 @@
 import './main.scss';
-import { renderLogo, renderDaily, clearDaily } from './modules/render';
+import {
+  renderLogo,
+  renderDaily,
+  renderSummary,
+  clearDaily,
+} from './modules/render';
 import getWeather from './modules/openWeather';
 
 renderLogo();
@@ -18,6 +23,7 @@ cityInput.addEventListener('keyup', (event) => {
       console.log(value);
       clearDaily();
       renderDaily(value.daily);
+      renderSummary(value.current);
     });
   }
 });
