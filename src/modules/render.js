@@ -1,8 +1,13 @@
 import logoSrc from '../imgs/sun.png';
+import cloudy from '../imgs/svgs/wi-cloud.svg';
+import sunny from '../imgs/svgs/wi-day-sunny.svg';
+import windy from '../imgs/svgs/wi-cloudy-gusts.svg';
+import lightning from '../imgs/svgs/wi-day-lightning.svg';
+import rain from '../imgs/svgs/wi-day-sprinkle.svg';
+import snow from '../imgs/svgs/wi-snow.svg';
 
 const header = document.querySelector('header');
 const dailyWeather = document.querySelector('#daily-weather');
-const hourlyWeather = document.querySelector('#hourly-weather');
 
 const renderLogo = () => {
   const img = new Image();
@@ -44,7 +49,12 @@ const renderDaily = (daily) => {
     weekday.textContent = day;
 
     const icon = new Image();
-    icon.src = logoSrc;
+    if (daily[i].weather[0].main === 'Clouds') icon.src = cloudy;
+    if (daily[i].weather[0].main === 'Clear') icon.src = sunny;
+    if (daily[i].weather[0].main === 'Rain') icon.src = rain;
+    if (daily[i].weather[0].main === 'Snow') icon.src = snow;
+    if (daily[i].weather[0].main === 'Wind') icon.src = windy;
+    if (daily[i].weather[0].main === 'Lightning') icon.src = lightning;
     icon.classList.add('weather-icon');
 
     const temperature = document.createElement('h3');
@@ -63,8 +73,12 @@ const renderDaily = (daily) => {
   }
 };
 
-const renderHourly = (hourly) => {
-  console.log(hourly);
+const clearDaily = () => {
+  if (dailyWeather.hasChildNodes) {
+    while (dailyWeather.firstChild) {
+      dailyWeather.removeChild(dailyWeather.lastChild);
+    }
+  }
 };
 
-export { renderLogo, renderDaily, renderHourly };
+export { renderLogo, renderDaily, clearDaily };
