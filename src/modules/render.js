@@ -29,7 +29,8 @@ const getWeekday = (dayNum) => {
 const getFromattedTime = () => {
   const date = new Date();
   const hour = date.getHours();
-  const minute = date.getMinutes();
+  let minute = date.getMinutes().toString();
+  if (minute < 10) minute = `0${minute}`;
   if (date.getHours() > 12) {
     return `${hour - 12}:${minute} pm`;
   }
@@ -52,7 +53,7 @@ const renderDaily = (daily) => {
   }
   console.log(daysArr);
 
-  for (let i = 0; i < 8; i += 1) {
+  for (let i = 0; i < 7; i += 1) {
     const card = document.createElement('div');
     card.classList.add('daily-card');
 
@@ -77,6 +78,11 @@ const renderDaily = (daily) => {
     if (daily[i].weather[0].main === 'Lightning') icon.src = lightning;
     icon.classList.add('weather-icon');
 
+    const tempeartureContainer = document.createElement('div');
+    tempeartureContainer.classList.add('temperature-container');
+    const degreeImg = new Image();
+    degreeImg.classList.add('degree-img');
+
     const temperature = document.createElement('h3');
     temperature.classList.add('temperature');
     temperature.textContent = `${daily[i].temp.day}`;
@@ -88,7 +94,9 @@ const renderDaily = (daily) => {
     dailyWeather.appendChild(card);
     card.appendChild(weekday);
     card.appendChild(icon);
-    card.appendChild(temperature);
+    card.appendChild(tempeartureContainer);
+    tempeartureContainer.appendChild(temperature);
+    tempeartureContainer.appendChild(degreeImg);
     card.appendChild(forecast);
   }
 };
