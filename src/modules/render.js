@@ -37,6 +37,10 @@ const getFromattedTime = () => {
   return `${hour}:${minute} am`;
 };
 
+const checkDegree = () => {
+  // empty function
+};
+
 const renderDaily = (daily) => {
   console.log(daily);
   const date = new Date();
@@ -155,12 +159,14 @@ const renderSummary = (current) => {
   humidity.classList.add('summary-humidity');
   humidity.textContent = `Humitidy: ${current.humidity}%`;
 
-  const conatiner = document.getElementById('weather-summary');
-  conatiner.appendChild(dateAndTimeContainer);
+  const container = document.getElementById('weather-summary');
+  container.style.backgroundColor = 'tan';
+
+  container.appendChild(dateAndTimeContainer);
   dateAndTimeContainer.appendChild(day);
   dateAndTimeContainer.appendChild(time);
-  conatiner.appendChild(weatherImg);
-  conatiner.appendChild(descriptionContainer);
+  container.appendChild(weatherImg);
+  container.appendChild(descriptionContainer);
   descriptionContainer.appendChild(weatherDescription);
   descriptionContainer.appendChild(temperature);
   descriptionContainer.appendChild(feelsLike);

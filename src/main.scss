@@ -185,7 +185,6 @@ h2 {
 
 #daily-weather {
   @include weather-shape;
-  background: red;
 }
 
 .daily-card {
@@ -229,7 +228,7 @@ h2 {
   flex-direction: column;
   height: 40vh;
   width: 40vh;
-  background-color: orange;
+  border-radius: 20px;
 }
 
 .date-and-time-container {
@@ -276,7 +275,7 @@ h2 {
 @media (max-width: 320px) {
   .date-and-time-container {
     p {
-      font-size: 20px;
+      font-size: 30px;
     }
   }
 }
