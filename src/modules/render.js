@@ -33,7 +33,7 @@ const getFromattedTime = () => {
   if (date.getHours() > 12) {
     return `${hour - 12}:${minute} pm`;
   }
-  return `${date.getHours()}:${date.getMinutes} am`;
+  return `${hour}:${minute} am`;
 };
 
 const renderDaily = (daily) => {
